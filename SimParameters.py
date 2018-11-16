@@ -13,8 +13,10 @@ import random as random
 class Patient:
     # ##run more than one patient through tree to find costs and utilities
     # run a patient
-    def __init__(self):
+    def __init__(self, id):
+        self._id = id
         self._rnd = np.random
+        self._rnd.seed(self._id)
         # counts
         self._count_OS_S = 0
         self._count_OS_NS = 0
@@ -282,7 +284,7 @@ class YearofPatients:
         # Maybe we'll change this later, but this should work for now.
 
         for i in range(self._initial_pop_size_pre):
-            patient = Patient()
+            patient = Patient(id=3)
             self._patients.append(patient)
             self.draw = patient.draw
             if self.draw == 'a':
@@ -367,7 +369,7 @@ class YearofPatients:
                 self._con_nn_patients.append(patient)
 
         for i in range(self._initial_pop_size_post):
-            patient = Patient()
+            patient = Patient(id=3)
             self._patients.append(patient)
             self.draw = patient.draw
             if self.draw == 'a':

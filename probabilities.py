@@ -17,8 +17,8 @@ neo_noos_s = 0.333
 append_os_s = 0.545
 append_noos_s = 0.353
 
-diab_os_s = 0.208
-diab_noos_s = 0.198
+diab_os_s = 0.835
+diab_noos_s = 0.479
 
 mathem_os_s = 0.070
 mathhem_noos_s = 0.028
