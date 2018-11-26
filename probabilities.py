@@ -9,8 +9,8 @@ injury_noos_s = 0.038
 gyne_os_s = 0.010
 gyne_noos_s = 0.006
 
-neo_os_s = 0.579
-neo_noos_s = 0.333
+neo_os_s = 0.333
+neo_noos_s = 0.579
 
 ############################################
 

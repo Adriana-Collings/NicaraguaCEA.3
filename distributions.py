@@ -1,11 +1,13 @@
 import numpy as np
 
-#change the maximum age!!!
+#np.random.seed(1)
+
+max_age = 75.4
 
 def lognormal(mean,sigma):
     while True:
         age = np.random.lognormal(mean=(mean), sigma=(sigma),size=None)
-        if 0 <= age <= 100:
+        if 0 <= age <= max_age:
             break
     return age
 
@@ -13,14 +15,14 @@ def weibull(a, lam):
     while True:
         age = np.random.weibull(a=a)
         age2 = age*lam
-        if 0 <= age <= 100:
+        if 0 <= age2 <= max_age:
             break
     return age2
 
 def gamma(shape,rate):
     while True:
         age = np.random.gamma(shape=shape, scale=(1/rate), size=None)
-        if 0 <= age <= 100:
+        if 0 <= age <= max_age:
             break
     return age
 
@@ -29,7 +31,7 @@ def gamma(shape,rate):
 # need to fix Weibull and Gamma
 Age_abscess = weibull(a=1.556657, lam=34.006317)
 Age_appen = gamma(shape=3.23739, rate=0.126173)
-Age_finger_amp = weibull(a=1.515371, lam = 0.126173)
+Age_finger_amp = weibull(a=1.515371, lam = 39.354355)
 Age_burn = gamma(shape=0.92747608, rate = 0.0317023)
 Age_csection = gamma(shape=12.5258328, rate = 0.5276385)
 Age_diab = weibull(a=4.599732, lam = 61.886372)

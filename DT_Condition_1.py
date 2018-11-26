@@ -14,15 +14,16 @@ import costs as Co
 K = 0               # modulates age weight inclusion (1 or 0)
 C = 0.1658          # mathematical constant
 r_YLL = 0             # discount rate (0%, 3%, or 6%)
-a_YLL = random.randint(5, 75)              # age at death (randomize?)
 b = 0.04            # parameter from age weighting function (0.04)
 e = 2.72            # natural logarithm root (2.72)
 L_YLL = 75              # life expectancy
 
-r_YLD = 0.03            # discount rate (0%, 3%, or 6%)
+r_YLD = 0            # discount rate (0%, 3%, or 6%)
 a_YLD = dist.Age_abscess              # age at ONSET
+a_YLL = random.randint(round(a_YLD, 0), 75)  # age at death
 L_YLD = a_YLL - a_YLD              # years lived with disability (randomize for condition or keep constant for country?)
 DW = DWpy.DW_abscess             # disability weight
+
 
 if r_YLL == 0:
     YLL = ((K * C * (e ** (-(b * a_YLL)))) / (b ** 2)) * \
@@ -47,6 +48,7 @@ if r_YLD != 0:
 
 
 YLD_disease = YLD
+
 ########################################################################################################################
 ########################################################################################################################
 # probabilities
@@ -58,7 +60,7 @@ PR_OS_NoSurgery = 1-PR_OS_Surgery
 PR_NoOS_Surgery = PR.skin_noos_s
 PR_NoOS_NoSurgery = 1-PR_NoOS_Surgery
 ########################################################################################################################
-DALY = (YLD_disease*DW)
+DALY = (YLD_disease)
 
 def get_DALY(self):
     return DALY
