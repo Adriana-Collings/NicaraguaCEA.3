@@ -10,7 +10,7 @@ from numpy.random import choice
 import random as random
 import costs as Co
 
-
+random.seed(1)
 
 class Patient:
     # ##run more than one patient through tree to find costs and utilities
@@ -18,7 +18,7 @@ class Patient:
     def __init__(self, id):
         self._id = id
         self._rnd = np.random
-        #self._rnd.seed(self._id)
+        self._rnd.seed(self._id)
         # counts
         self._count_OS_S = 0
         self._count_OS_NS = 0
@@ -205,17 +205,17 @@ class Patient:
         self._S_OS_S_U = (self._count_OS_S * D.OS_Surgery_U)#/(self._count_OS_S+self._count_OS_NS+1)
 
         self._S_OS_NS_C = self._count_OS_NS * D.OS_NoSurgery_C
-        self._S_OS_NS_U = (self._count_OS_NS * D.OS_NoSurgery_U)#/(self._count_OS_S+self._count_OS_NS+1)
+        self._S_OS_NS_U = self._count_OS_NS * D.OS_NoSurgery_U#/(self._count_OS_S+self._count_OS_NS+1)
 
         self._S_NoOS_S_C = self._count_NoOS_S * D.NoOS_Surgery_C
-        self._S_NoOS_S_U = (self._count_NoOS_S * D.NoOS_Surgery_U)#/(self._count_NoOS_S+self._count_NoOS_NS+1)
+        self._S_NoOS_S_U = self._count_NoOS_S * D.NoOS_Surgery_U#/(self._count_NoOS_S+self._count_NoOS_NS+1)
 
         self._S_NoOS_NS_C = self._count_NoOS_NS * D.NoOS_NoSurgery_C
-        self._S_NoOS_NS_U = (self._count_NoOS_NS * D.NoOS_NoSurgery_U)#/(self._count_NoOS_S+self._count_NoOS_NS+1)
+        self._S_NoOS_NS_U = self._count_NoOS_NS * D.NoOS_NoSurgery_U#/(self._count_NoOS_S+self._count_NoOS_NS+1)
 
-        self._total_OpSmile_costs = self._S_OS_S_C + self._S_OS_NS_C
+        self._total_OpSmile_costs = (self._S_OS_S_C + self._S_OS_NS_C)
 
-        self._total_OpSmile_utilities = (self._S_OS_S_U + self._S_OS_NS_U)
+        self._total_OpSmile_utilities = self._S_OS_S_U + self._S_OS_NS_U
 
         self._total_NoOpSmile_costs = self._S_NoOS_S_C + self._S_NoOS_NS_C
 
@@ -231,7 +231,7 @@ class Patient:
         return self._total_OpSmile_utilities
 
     def get_NoOS_utility(self):
-        return  self._total_NoOpSmile_utilities
+        return self._total_NoOpSmile_utilities
 
 
 class YearofPatients:
@@ -279,7 +279,7 @@ class YearofPatients:
         self._con_nn_patients = []
         # eventually we'll want to add other metrics here. Like how many died, etc.
 
-        self._initial_pop_size_pre= 1451
+        self._initial_pop_size_pre = 1451
         self._initial_pop_size_post = 2658
         # fixed internally because we're going to make this number random eventually.
         # Maybe we'll change this later, but this should work for now.

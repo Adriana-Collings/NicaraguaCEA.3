@@ -11,6 +11,7 @@ def lognormal(mean,sigma):
             break
     return age
 
+
 def weibull(a, lam):
     while True:
         age = np.random.weibull(a=a)

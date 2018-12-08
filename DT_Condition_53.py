@@ -67,11 +67,11 @@ def get_DALY(self):
 # costs
 ########################################################################################################################
 #OpSmile
-OpSmile_C = Co.OpSmile_C                   # Cost of Operation Smile Project Implementation
+#OpSmile_C = Co.OpSmile_C                   # Cost of Operation Smile Project Implementation
 OS_Surgery_C = Co.OS_Surgery_C                   # Cost of Surgery with OpSmile
 OS_NoSurgery_C = Co.OS_NoSurgery_C              # Cost of No surgery with OpSmile
 #NoOpSmile
-NoOS_C = Co.NoOS_C                         # Cost of No Operation Smile Project Implementation
+#NoOS_C = Co.NoOS_C                         # Cost of No Operation Smile Project Implementation
 NoOS_Surgery_C = Co.NoOS_Surgery_C               # Cost of NoOpSmile Surgery
 NoOS_NoSurgery_C = Co.NoOS_NoSurgery_C               # Cost no surgery without OpSmile
 ########################################################################################################################
@@ -87,8 +87,8 @@ NoOS_NoSurgery_U = DALY
 
 # dictionary for decision nodes
 #               // key: cost, utility, [future nodes]
-dictDecisions_OS = {'d1': [Co.OpSmile_C  , 5, ['OpSmile', 'toss']]}
-dictDecisions_NoOS = {'d2': [Co.NoOS_C , 5, ['NoOS', 'toss2']]}
+dictDecisions_OS = {'d1': [Co.OpSmile_C, 5, ['OpSmile', 'toss']]}
+dictDecisions_NoOS = {'d2': [Co.NoOS_C, 5, ['NoOS', 'toss2']]}
 
 # dictionary for terminal nodes
 #               //key:           cost, utility
